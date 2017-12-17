@@ -1,0 +1,12 @@
+CREATE TABLE `t_red_packet` (
+   `id` int(12) NOT NULL AUTO_INCREMENT,
+   `user_id` int(12) NOT NULL,
+   `amount` decimal(16,2) NOT NULL,
+   `send_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+   `total` int(12) NOT NULL,
+   `unit_amount` decimal(12,0) NOT NULL,
+   `stock` int(12) NOT NULL,
+   `version` int(12) NOT NULL,
+   `note` char(128) CHARACTER SET utf8 DEFAULT NULL,
+   PRIMARY KEY (`id`)
+ ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8
