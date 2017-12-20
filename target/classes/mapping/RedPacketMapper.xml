@@ -3,7 +3,7 @@
 <mapper namespace="com.cw.dao.RedPacketDao">
 	<resultMap type="RedPacket" id="redPacketMap">
 		<result property="id" column="id"/>
-		<result property="userId" column="userId"/>
+		<result property="userId" column="user_id"/>
 		<result property="amount" column="amount"/>
 		<result property="sendDate" column="send_date"/>
 		<result property="total" column="total"/>
@@ -25,7 +25,7 @@
 	</sql>
 	
 	<sql id="field">
-		id,userId,amount,sendDate,total,unitAmount,stock,version,note
+		id,user_id,amount,send_date,total,unit_amount,stock,version,note
 	</sql>
 	
 	<select id="getRedPacket" parameterType="long" resultMap="redPacketMap">

@@ -1,23 +1,27 @@
 package com.cw.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONObject;
 import com.cw.service.UserRedPacketService;
 
+@Controller
 @RequestMapping(value="/userRedPacket")
 public class UserRedPacketController {
 	@Autowired
 	private UserRedPacketService userRedPacketService = null;
 	
 	@RequestMapping(value="/grapRedPacket")
+	@ResponseBody
 	public JSONObject grapRedPacket(Long redPacketId,Long userId){
 		int result = userRedPacketService.grapRedPacket(redPacketId, userId);
 		boolean flag = result>0;
 		JSONObject json = new JSONObject();
 		json.put("success", flag);
-		json.put("message", flag?"ÇÀºì°ü³É¹¦£¡":"ÇÀºì°üÊ§°Ü£¡");
+		json.put("message", flag?"æŠ¢çº¢åŒ…æˆåŠŸ":"æŠ¢çº¢åŒ…å¤±è´¥");
 		return json;
 	} 
 }

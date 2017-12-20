@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.cw.dao.UserRedPacketDao;
 import com.cw.entity.RedPacket;
 import com.cw.entity.UserRedPacket;
+import com.cw.service.RedPacketService;
 import com.cw.service.UserRedPacketService;
 @Service
 public class UserRedPacketServiceImpl implements UserRedPacketService {
@@ -16,13 +17,16 @@ public class UserRedPacketServiceImpl implements UserRedPacketService {
 	@Autowired
 	UserRedPacketDao userRedPacketDao = null;
 	@Autowired
-	RedPacketServiceImpl redPacketService = null;
+	RedPacketService redPacketService = null;
 	
 	private static final int FAILED = 0;
 	
 	@Transactional(isolation=Isolation.READ_COMMITTED,propagation=Propagation.REQUIRED)
 	public int grapRedPacket(Long redPacketId, Long userId) {
 		RedPacket redPacket = redPacketService.getRedPacket(redPacketId);
+		if(redPacket==null){
+			return FAILED;
+		}
 		if(redPacket.getStock()>0){
 			redPacketService.decreaseRedPacket(redPacketId);
 			

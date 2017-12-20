@@ -3,7 +3,7 @@
 <mapper namespace="com.cw.dao.UserRedPacketDao">
 	<resultMap type="userRedPacket" id="userRedPacketMap">
 		<result property="id" column="id"/>
-		<result property="userId" column="userId"/>
+		<result property="userId" column="user_id"/>
 		<result property="redPacketId" column="red_packet_id"/>
 		<result property="amount" column="amount"/>
 		<result property="grabTime" column="grab_time"/>
@@ -16,12 +16,12 @@
 	
 	<sql id="selectCondition">
 		<if test="id !=null">and id=#{id}</if>
-		<if test="userId !=null">and userId=#{userId}</if>
-		<if test="red_packet_id !=null">and red_packet_id=#{red_packet_id}</if>
+		<if test="userId !=null">and user_id=#{userId}</if>
+		<if test="redPacketId !=null">and red_packet_id=#{redPacketId}</if>
 	</sql>
 	
 	<sql id="field">
-		id,userId,red_packet_id,amount,note,grabTime
+		id,user_id,red_packet_id,amount,note,grab_time
 	</sql>
 	
 	<insert id="grapRedPacket" parameterType="userRedPacket" useGeneratedKeys="true" keyProperty="id">
