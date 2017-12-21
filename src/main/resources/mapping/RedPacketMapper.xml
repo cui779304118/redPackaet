@@ -32,9 +32,11 @@
 		select <include refid="field"/> from <include refid="table"/> where id = #{id}
 	</select>
 	
-	<update id="decreaseRedPacket" parameterType="long">
-		update <include refid="table"/> set stock=stock-1 where id=#{id}
+	<update id="decreaseRedPacketByVersion" parameterType="long">
+		update <include refid="table"/> set stock=stock-1 ,version = version + 1 where id=#{id} and version=#{version} 
 	</update>
 	
-	
+	<update id="decreaseRedPacket" parameterType="long">
+		update <include refid="table"/> set stock=stock-1  where id=#{id}
+	</update>
 </mapper>

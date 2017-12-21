@@ -1,5 +1,8 @@
 package com.cw.controller;
 
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,17 +14,20 @@ import com.cw.service.UserRedPacketService;
 @Controller
 @RequestMapping(value="/userRedPacket")
 public class UserRedPacketController {
+	private static Logger logger = LoggerFactory.getLogger(com.cw.controller.UserRedPacketController.class);
 	@Autowired
 	private UserRedPacketService userRedPacketService = null;
 	
 	@RequestMapping(value="/grapRedPacket")
 	@ResponseBody
 	public JSONObject grapRedPacket(Long redPacketId,Long userId){
-		int result = userRedPacketService.grapRedPacket(redPacketId, userId);
+		logger.info("=====================开始抢红包====================");
+		int result = userRedPacketService.grapRedPacketForVersion2(redPacketId, userId);
 		boolean flag = result>0;
 		JSONObject json = new JSONObject();
 		json.put("success", flag);
 		json.put("message", flag?"抢红包成功":"抢红包失败");
+		logger.info("=====================抢红包结束====================");
 		return json;
 	} 
 }

@@ -12,4 +12,9 @@ public interface RedPacketService {
 	 * 扣减红包
 	 */
 	public int decreaseRedPacket(Long id);
+	
+	/**
+	 * 扣减红包,加入版本控制，乐观锁
+	 */
+	public int decreaseRedPacketByVersion(Long id,Long version);
 }

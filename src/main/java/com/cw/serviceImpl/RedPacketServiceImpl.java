@@ -26,4 +26,10 @@ public class RedPacketServiceImpl implements RedPacketService {
 		return redPacketDao.decreaseRedPacket(id);
 	}
 
+	@Override
+	public int decreaseRedPacketByVersion(Long id, Long version) {
+		// TODO Auto-generated method stub
+		return redPacketDao.decreaseRedPacketByVersion(id, version);
+	}
+
 }

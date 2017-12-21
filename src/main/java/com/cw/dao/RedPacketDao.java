@@ -1,5 +1,6 @@
 package com.cw.dao;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.cw.entity.RedPacket;
@@ -14,5 +15,10 @@ public interface RedPacketDao {
 	 * 扣减抢红包数
 	 */
 	public int decreaseRedPacket(Long id);
+	
+	/**
+	 * 扣减抢红包数
+	 */
+	public int decreaseRedPacketByVersion(@Param("id") Long id,@Param("version") Long version);
 }
 

@@ -12,7 +12,7 @@ public class RedPacket implements Serializable {
 	private Integer total;
 	private Double unitAmount;
 	private Integer stock;
-	private Integer version;
+	private Long version;
 	private String note;
 	
 	public Long getId() {
@@ -57,10 +57,10 @@ public class RedPacket implements Serializable {
 	public void setStock(Integer stock) {
 		this.stock = stock;
 	}
-	public Integer getVersion() {
+	public Long getVersion() {
 		return version;
 	}
-	public void setVersion(Integer version) {
+	public void setVersion(Long version) {
 		this.version = version;
 	}
 	public String getNote() {

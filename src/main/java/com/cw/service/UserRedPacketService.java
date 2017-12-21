@@ -5,7 +5,9 @@ import com.cw.entity.RedPacket;
 public interface UserRedPacketService {
 	
 	/**
-	 * 保存抢红包信息
+	 * 保存抢红包信息，加入版本号判断，乐观锁实现
 	 */
-	public int grapRedPacket(Long redPacketId,Long userId);
+	public int grapRedPacketForVersion(Long redPacketId,Long userId);
+	public int grapRedPacketForVersion2(Long redPacketId,Long userId);
+	
 }
