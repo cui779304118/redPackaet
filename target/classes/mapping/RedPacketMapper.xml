@@ -39,4 +39,9 @@
 	<update id="decreaseRedPacket" parameterType="long">
 		update <include refid="table"/> set stock=stock-1  where id=#{id}
 	</update>
+	
+	<insert id="insertRedPacketInfo" parameterType="redPacket" useGeneratedKeys="true">
+		insert into <include refid="table"/> (user_id,amount,send_date,total,unit_amount,stock,version,note)
+		values (#{userId},#{amount},#{sendDate},#{total},#{unitAmount},#{stock},#{version},#{note})
+	</insert>
 </mapper>

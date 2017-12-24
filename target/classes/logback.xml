@@ -9,7 +9,7 @@
 	
 	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<FileNamePattern>${LOG_HOME}\promotion.log.%d{yyyy-MM-dd}.log</FileNamePattern>
+			<FileNamePattern>${LOG_HOME}\redpacket.log.%d{yyyy-MM-dd}.log</FileNamePattern>
 			<MaxHistory>30</MaxHistory>
 		</rollingPolicy>
 		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
@@ -20,10 +20,10 @@
 		</triggeringPolicy>
 	</appender>
 	
-	<logger name="com.sohu.promotion.handle.FullIdfaHandler">
+	<!-- <logger name="com.sohu.promotion.handle.FullIdfaHandler">
 		<level value="debug"/>
 		<appender-ref ref="STDOUT"/>
-	</logger>
+	</logger> -->
 	
 	<root level="INFO">
 		<appender-ref ref="STDOUT"/>

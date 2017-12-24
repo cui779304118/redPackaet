@@ -26,9 +26,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			var max=30000;
 			for(var i=1;i<=max;i++){
 				$.post({
-				url:"http://localhost:8080/redPacket/userRedPacket/grapRedPacket?redPacketId=8&userId="+i,
+				url:"http://localhost:8080/redPacket/userRedPacket/grapRandomRedPacketByRedis?redPacketId=33&userId="+i,
 				success:function(result){
-					document.write("<strong>抢红包成功！</strong>");
+					document.write("<strong>抢红包成功!</strong>");
 				}
 				});
 			}

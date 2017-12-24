@@ -9,5 +9,6 @@ public interface UserRedPacketService {
 	 */
 	public int grapRedPacketForVersion(Long redPacketId,Long userId);
 	public int grapRedPacketForVersion2(Long redPacketId,Long userId);
-	
+	public int grapRedPacketByRedis(Long redPacketId,Long userId);
+	public int grapRedPacketByRedisAlgnorithm(Long redPacketId, Long userId);
 }

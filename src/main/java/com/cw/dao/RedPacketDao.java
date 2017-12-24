@@ -20,5 +20,10 @@ public interface RedPacketDao {
 	 * 扣减抢红包数
 	 */
 	public int decreaseRedPacketByVersion(@Param("id") Long id,@Param("version") Long version);
+	
+	/**
+	 * 添加红包信息
+	 */
+	public int insertRedPacketInfo(RedPacket redPacket);
 }
 

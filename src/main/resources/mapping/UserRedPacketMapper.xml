@@ -29,5 +29,12 @@
 		values(#{redPacketId},#{userId},#{amount},#{note},#{grabTime})
 	</insert>
 	
+	<insert id="insetUserRedPacketBatch" parameterType="java.util.List" useGeneratedKeys="true">
+		insert into <include refid="table"/>(red_packet_id,user_id,amount,note,grab_time)
+		values
+		<foreach collection="list" item="item" index="index" separator=",">
+		(#{item.redPacketId},#{item.userId},#{item.amount},#{item.note},#{item.grabTime})
+		</foreach>
+	</insert>
 	
 </mapper>
