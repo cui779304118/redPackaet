@@ -163,11 +163,11 @@ public class UserRedPacketServiceImpl implements UserRedPacketService {
 	public int grapRedPacketByRedisAlgnorithm(Long redPacketId, Long userId) {
 		String redPacketKey = Constants.redPacketKey + redPacketId;
 		String grabRedPacketKey = Constants.grabRedPacketKey + redPacketId;
-		String redPacketAmountListKey =Constants.redPacketAmountListKey;
-		String redPacketIndexKey = Constants.redPacketIndexKey;
+		String redPacketAmountListKey =Constants.redPacketAmountListKey + redPacketId;
+		String redPacketIndexKey = Constants.redPacketIndexKey +  redPacketId;
 		
 		int index =Integer.parseInt((String)redisTemplate.opsForValue().get(redPacketIndexKey)); 
-		String unitAmountStr =(String) redisTemplate.opsForList().range(redPacketAmountListKey,index, index).get(0);
+		String unitAmountStr =(String) redisTemplate.opsForList().index(redPacketAmountListKey, index);
 		Double unitAmount = Double.parseDouble(unitAmountStr);
 		String args = userId + "," + unitAmount + System.currentTimeMillis();
 		
@@ -186,7 +186,7 @@ public class UserRedPacketServiceImpl implements UserRedPacketService {
 		
 		if(stock>Constants.LAST_RED_PACKET){
 			redisTemplate.opsForHash().increment(redPacketKey,"stock", -1*unitAmount);
-			redisTemplate.opsForValue().increment(redPacketAmountListKey, 1);
+			redisTemplate.opsForValue().increment(redPacketIndexKey, 1);
 			redisTemplate.opsForList().leftPush(grabRedPacketKey, args);
 			logger.info("恭喜您，抢到红包 ： " + unitAmount/100 + "元");
 			return Constants.Grab_SUCCESS;

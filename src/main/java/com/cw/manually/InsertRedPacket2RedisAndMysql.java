@@ -33,8 +33,8 @@ public class InsertRedPacket2RedisAndMysql {
 		long min = 1;
 		
 		InsertRedPacket2RedisAndMysql IRM = new InsertRedPacket2RedisAndMysql();
-//		IRM.insertRedPacketInfo(redPacketId);
-		IRM.generateRedPacket(total, count, max, min, redPacketId);
+		IRM.insertRedPacketInfo(redPacketId);
+//		IRM.generateRedPacket(total, count, max, min, redPacketId);
 		logger.info("插入结束！");
 	}
 	
@@ -49,7 +49,7 @@ public class InsertRedPacket2RedisAndMysql {
 		
 		RedisTemplate redisTemplate = (RedisTemplate) context.getBean(RedisTemplate.class);
 		String key = Constants.redPacketKey + redPacketId;
-		String redPacketIndexKey = Constants.redPacketIndexKey;
+		String redPacketIndexKey = Constants.redPacketIndexKey + redPacketId;
 		
 		Map<String,String> redPacketInfo = new HashMap<String,String>(){
 			{
